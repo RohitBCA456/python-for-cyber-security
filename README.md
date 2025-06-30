@@ -1,4 +1,4 @@
-# Python for Cyber Security 🐍🛡️
+# 🐍🛡️ Python for Cyber Security
 
 This repository contains Python scripts and basic programming exercises aimed at learning Python in the context of cyber security. It is a collection of tools, examples, and foundational programs for those who want to understand how Python can be used in ethical hacking and penetration testing.
 
@@ -6,10 +6,11 @@ This repository contains Python scripts and basic programming exercises aimed at
 
 ## 📁 Folder Structure
 
-```bash
+```
 .
-├── MAC Changer/            # A MAC address spoofing tool
-├── PythonBasic/            # Basic Python programs (conditions, loops, functions, etc.)
+├── MAC Changer/            # MAC address spoofing tool
+├── PythonBasic/            # Core Python concepts & exercises
+├── Network Scanner/        # Scapy-based tool to detect network devices
 ├── README.md               # You're reading it
 ```
 
@@ -18,44 +19,60 @@ This repository contains Python scripts and basic programming exercises aimed at
 ## 🚀 Projects
 
 ### 1. MAC Changer
-A Python script to change the MAC address of a specified network interface.
-
-> 📍 Located in: `MAC Changer/mac_changer.py`
-
-#### 🔧 Features:
-- Takes arguments from the command line (`-i` for interface, `-m` for new MAC)
-- Changes MAC using `ifconfig`
-- Validates change success with regex
-
-#### 🧪 Usage:
-```bash
-sudo python3 mac_changer.py -i eth0 -m 00:11:22:33:44:55
-```
+- **Location**: `MAC Changer/mac_changer.py`
+- **Purpose**: Spoofs MAC addresses using `ifconfig`, verifies changes via regex.
+- **Usage**:
+  ```bash
+  sudo python3 mac_changer.py -i eth0 -m 00:11:22:33:44:55
+  ```
 
 ---
 
-### 2. PythonBasic
-
-> 📍 Located in: `PythonBasic/`
-
-Contains beginner-friendly Python programs, ideal for anyone starting their journey into:
-- Data types
-- Conditional statements
-- Loops
-- Functions
-- Lists, Tuples, Sets, Dictionaries
-- File handling
-- Modules and packages
+### 2. Network Scanner (New!)
+- **Location**: `Network Scanner/network_scanner.py`
+- **Purpose**: Scans devices connected to the same network using `scapy`, retrieving their MAC and IP addresses.
+- **Features**:
+  - Sends ARP requests in broadcast
+  - Receives responses and lists active devices
+- **Usage**:
+  ```bash
+  sudo python3 network_scanner.py -t 192.168.1.1/24
+  ```
 
 ---
 
-## 📌 Prerequisites
+### 3. PythonBasic
+- **Location**: `PythonBasic/`
+- **Topics Covered**:
+  - Data types, conditionals, loops, and functions
+  - Collections (lists, tuples, sets, dictionaries)
+  - File handling and modules
+
+---
+
+## 🎓 Learning Resources
+
+- **Scripts**: Real-world tools like MAC spoofers and network scanners
+- **Courses**:
+  - Coursera – *Python for Cybersecurity Specialization*
+  - Udemy – *Python for Ethical Hacking*
+  - Cybrary – *Python for Cybersecurity Professionals*
+- **Books**:
+  - *Python for Cybersecurity: Offense and Defense*
+  - *Python Programming for Cybersecurity*
+- **Articles**:
+  - GeeksforGeeks: Python cybersecurity libraries
+  - Medium: Security scripts like keyloggers, brute-force tools, scanners
+
+---
+
+## ⚙️ Prerequisites
 
 - Python 3.x
-- `ifconfig` (part of `net-tools`) for MAC Changer tool:
-  
+- Required tools and libraries:
   ```bash
   sudo apt install net-tools
+  pip install scapy
   ```
 
 ---
@@ -63,34 +80,32 @@ Contains beginner-friendly Python programs, ideal for anyone starting their jour
 ## 👨‍💻 Author
 
 **Rohit Yadav**  
-GitHub: [RohitBCA456](https://github.com/RohitBCA456)  
-Project Repo: [Python for Cyber Security](https://github.com/RohitBCA456/python-for-cyber-security)
+GitHub: [@RohitBCA456](https://github.com/RohitBCA456)
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome!
+Contributions are welcome! You can:
 
-If you want to:
 - Fix bugs 🐞
-- Add new tools 🔧
-- Improve documentation 📝
-- Clean up code 🧹
-
-Feel free to fork the repo, create a branch, and submit a pull request.
+- Add tools 🔧
+- Improve docs 📝
 
 ```bash
-# Example workflow
 git clone https://github.com/RohitBCA456/python-for-cyber-security.git
 cd python-for-cyber-security
-git checkout -b your-feature-branch
-# Make your changes
+git checkout -b feature-branch
+# make changes
 git add .
-git commit -m "Your message"
-git push origin your-feature-branch
+git commit -m "Added new feature"
+git push origin feature-branch
 ```
 
 ---
 
-Let me know if you want to contribute something and need help getting started!
+## ✅ Latest Updates
+
+- ✅ Added Network Scanner using `scapy`
+- ✅ Improved folder structure and tool descriptions
+- ✅ Updated learning resource section
