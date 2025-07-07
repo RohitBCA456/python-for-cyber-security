@@ -64,7 +64,7 @@ Performs ARP spoofing (man-in-the-middle attack) using `scapy`, and restores ARP
 - Restores ARP tables on CTRL+C
 
 💻 Usage:
-sudo python3 arp_spoofing.py
+sudo python3 arp_spoofing.py -t 192.168.110.129 -g 192.168.110.2
 ```
 
 ---
