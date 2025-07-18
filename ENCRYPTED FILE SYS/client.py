@@ -1,6 +1,17 @@
 from cryptography.fernet import Fernet
 import socket
 import os
+import optparse
+
+def get_arguments():
+    parser = optparse.OptionParser()
+    parser.add_option("-f", "--file", dest="file_path", help="File to encrypt")
+    (options, arguments) = parser.parse_args()
+    
+    if not options.file_path:
+        parser.error("[-] Please specify a file to encrypt. Use --help for more info.")
+    
+    return options.file_path
 
 def load_key():
     with open("secret.key", "rb") as key_file:
@@ -35,4 +46,5 @@ def start_encryption(filepath):
     s.close()
     print("Connection closed.")
 
-start_encryption('/home/kali/Desktop/Python for cyber security/README.md')
+option = get_arguments()
+start_encryption(option)
